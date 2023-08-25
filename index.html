@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DynaBlox</title>
+<title>Login and Signup Page</title>
 <style>
   /* Your CSS styles here */
 </style>
 </head>
 <body>
-  <h1>Dynablox is in beta stage. Dont expect things to work properly</h1>
+  <h1>Login and Signup</h1>
   
   <!-- Signup Form -->
   <div id="signup-form">
@@ -19,6 +19,8 @@
       <input type="password" id="signup-password" placeholder="Password" required>
       <button type="submit">Signup</button>
     </form>
+    <p id="signup-success" style="display: none; color: green;">Congratulations! Account created.</p>
+    <p id="signup-error" style="display: none; color: red;">Username already exists. Please choose a different username.</p>
   </div>
 
   <!-- Login Form -->
@@ -34,14 +36,26 @@
   <script>
     // Signup form
     const signupForm = document.getElementById("signup");
+    const signupSuccessMessage = document.getElementById("signup-success");
+    const signupErrorMessage = document.getElementById("signup-error");
+
     signupForm.addEventListener("submit", function(event) {
       event.preventDefault();
       const signupUsername = document.getElementById("signup-username").value;
       const signupPassword = document.getElementById("signup-password").value;
       
+      // Check if username already exists
+      const existingUsername = localStorage.getItem(signupUsername);
+      if (existingUsername !== null) {
+        signupErrorMessage.style.display = "block";
+        signupSuccessMessage.style.display = "none";
+        return;
+      }
+
       // Save signup data to localStorage
-      localStorage.setItem("username", signupUsername);
-      localStorage.setItem("password", signupPassword);
+      localStorage.setItem(signupUsername, signupPassword);
+      signupSuccessMessage.style.display = "block";
+      signupErrorMessage.style.display = "none";
       
       // Clear signup form
       signupForm.reset();
@@ -55,10 +69,9 @@
       const loginPassword = document.getElementById("login-password").value;
       
       // Retrieve signup data from localStorage
-      const savedUsername = localStorage.getItem("username");
-      const savedPassword = localStorage.getItem("password");
+      const savedPassword = localStorage.getItem(loginUsername);
       
-      if (loginUsername === savedUsername && loginPassword === savedPassword) {
+      if (loginPassword === savedPassword) {
         alert("Login successful!");
       } else {
         alert("Login failed. Please check your credentials.");
