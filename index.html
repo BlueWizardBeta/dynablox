@@ -121,7 +121,8 @@
       const savedPassword = localStorage.getItem(loginUsername);
       
       if (loginPassword === savedPassword) {
-        alert("Login successful!");
+        localStorage.setItem("loggedInUser", loginUsername);
+        window.location.href = "protected.html";
       } else {
         alert("Login failed. Please check your credentials.");
       }
