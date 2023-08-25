@@ -40,19 +40,19 @@
 </style>
 </head>
 <body>
-  <h1>Create an Account to start having Fun!</h1>
+  <h1>Create an Account to Start Having Fun!</h1>
   
   <!-- Popup -->
   <div class="popup" id="popup">
     <div class="close-button" onclick="closePopup()">&#10006;</div>
     <div class="popup-title">Welcome to Dynablox</div>
-    <div class="popup-text">This game is currently in the beta stage of development, which means that it's still undergoing testing and refinement. As a result, it's important to set your expectations accordingly and be aware that certain aspects might not function perfectly at this point in time. However, this beta phase provides a valuable opportunity for players to explore the game, provide feedback, and contribute to its improvement before the official release. Your patience and insights during this phase are immensely valuable as they contribute to shaping the final gaming experience into something truly exceptional.
-    </div>
+    <div class="popup-text">This game is currently in the beta stage of development, which means that it's still undergoing testing and refinement. As a result, it's important to set your expectations accordingly and be aware that certain aspects might not function perfectly at this point in time. However, this beta phase provides a valuable opportunity for players to explore the game, provide feedback, and contribute to its improvement before the official release. Your patience and insights during this phase are immensely valuable as they contribute to shaping the final gaming experience into something truly exceptional.</div>
   </div>
 
   <!-- Signup Form -->
   <div id="signup-form">
-    <h2>Signup</h2>e    <form id="signup">
+    <h2>Signup</h2>
+    <form id="signup">
       <input type="text" id="signup-username" placeholder="Username" required>
       <input type="password" id="signup-password" placeholder="Password" required>
       <button type="submit">Signup</button>
@@ -129,11 +129,6 @@
       // Clear login form
       loginForm.reset();
     });
-
-        // After successful login, redirect to the protected page
-    function redirectToProtectedPage() {
-      window.location.href = "protected.html";
-    }
   </script>
 </body>
 </html>
